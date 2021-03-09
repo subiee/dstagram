@@ -5,9 +5,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Photo
 
+@login_required
 def photo_list(request):
     photos = Photo.objects.all()
-    return render(request, 'photo/list.html', {'photos':photos})
+    return render(request,'photo/list.html', {'photos':photos})
 
 class PhotoUploadView(CreateView):
     model = Photo
